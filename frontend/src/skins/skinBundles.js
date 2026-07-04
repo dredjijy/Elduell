@@ -1,0 +1,261 @@
+// skins/skinBundles.js — Skin bundles, card skins, individual skins
+import {
+  TERRANOVA_SKIN_IMAGES,
+  INDIV_SKIN_IMAGES, INDIV_TERRE_ALT_IMAGE,
+  CAPY_SKIN_IMAGES, SWORD_SKIN_IMAGES, TITAN_SKIN_IMAGES,
+  PANDA_SKIN_IMAGES, ELITE_SKIN_IMAGES, DESTINY_SKIN_IMAGES,
+  MINOS_SKIN_IMAGES, ANCESTRAL_SKIN_IMAGES, OLDKING_SKIN_IMAGES,
+  TIMY_SKIN_IMAGES, DAYMI_SKIN_IMAGES,
+} from './skinImages.js';
+
+const CARD_SKINS = [
+  { id: "default", name: "Classique", price: 0 },
+  { id: "flame",   name: "Flamme",    price: 100 },
+  { id: "ocean",   name: "Océan",     price: 100 },
+  { id: "storm",   name: "Tempête",   price: 150 },
+  { id: "earth",   name: "Ancienne Terre", price: 150 },
+  { id: "cosmic",  name: "Cosmique",  price: 200 },
+];
+
+
+// ── Individual element skins — purchasable one by one ─────────
+
+const INDIVIDUAL_SKINS = [
+  { id: "indiv_EAU",       element: "EAU",   name: "Yeo",            price: 30,  color: "#06b6d4", glowColor: "rgba(6,182,212,0.4)",   img: "EAU",       desc: "Guerrier neon des plaines arides" },
+  { id: "indiv_FEU",       element: "FEU",   name: "Kilyat",         price: 80,  color: "#ef4444", glowColor: "rgba(239,68,68,0.4)",   img: "FEU",       desc: "Soldat cyber aux flammes urbaines" },
+  { id: "indiv_AIR",       element: "AIR",   name: "Etham",          price: 120, color: "#5a9a00", glowColor: "rgba(90,154,0,0.4)",    img: "AIR",       desc: "Maître des vents et des tempêtes" },
+  { id: "indiv_TERRE",     element: "TERRE", name: "Omi",            price: 250, color: "#92400e", glowColor: "rgba(146,64,14,0.4)",   img: "TERRE",     desc: "Golem de cristal et de pierre ancienne" },
+  { id: "indiv_ETHER",     element: "ETHER", name: "Vivgur",         price: 400, color: "#a855f7", glowColor: "rgba(168,85,247,0.4)",  img: "ETHER",     desc: "Ninja cyber de l'espace vide" },
+  { id: "indiv_TERRE_ALT", element: "TERRE", name: "Guerrier Forêt", price: 60,  color: "#4a7c00", glowColor: "rgba(74,124,0,0.4)",    img: "TERRE_ALT", desc: "Guerrier de la forêt enchantée" },
+];
+
+function getIndivImage(s) {
+  if (s.img === "TERRE_ALT") return INDIV_TERRE_ALT_IMAGE;
+  return INDIV_SKIN_IMAGES[s.img] || null;
+}
+
+const SKIN_BUNDLES = [
+  {
+    id:          "capycapy",
+    name:        "Capy Capy Pack",
+    description: "5 illustrations épiques du Capybara Élémentaire. Chaque élément a son propre guerrier capybara.",
+    price:       5000,
+    rarity:      "LÉGENDAIRE",
+    rarityColor: "#9333ea",
+    rarityGlow:  "rgba(147,51,234,0.3)",
+    icon:        "🦫",
+    skins: [
+      { id: "capycapy_EAU",   element: "EAU",   name: "Capy des Abysses",  color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: CAPY_SKIN_IMAGES.EAU },
+      { id: "capycapy_FEU",   element: "FEU",   name: "Capy Igné",         color: "#f97316",  glowColor: "rgba(249,115,22,0.5)",  image: CAPY_SKIN_IMAGES.FEU },
+      { id: "capycapy_AIR",   element: "AIR",   name: "Capy Céleste",      color: "#a3e635",  glowColor: "rgba(163,230,53,0.5)",  image: CAPY_SKIN_IMAGES.AIR },
+      { id: "capycapy_TERRE", element: "TERRE", name: "Capy Tellurique",   color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",   image: CAPY_SKIN_IMAGES.TERRE },
+      { id: "capycapy_ETHER", element: "ETHER", name: "Capy Cosmique",     color: "#c084fc",  glowColor: "rgba(192,132,252,0.5)", image: CAPY_SKIN_IMAGES.ETHER },
+    ],
+  },  {
+    id:          "sword",
+    name:        "Sword Elemental Pack",
+    description: "5 guerriers légendaires brandissant l\'épée de leur élément. Pack gratuit — offert à tous les duellistes.",
+    price:       0,
+    rarity:      "GRATUIT",
+    rarityColor: "#1a7a3f",
+    rarityGlow:  "rgba(26,122,63,0.25)",
+    icon:        "⚔️",
+    skins: [
+      { id: "sword_EAU",   element: "EAU",   name: "Lame des Abysses", color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: SWORD_SKIN_IMAGES.EAU },
+      { id: "sword_FEU",   element: "FEU",   name: "Lame Infernale",   color: "#ef4444",  glowColor: "rgba(239,68,68,0.5)",   image: SWORD_SKIN_IMAGES.FEU },
+      { id: "sword_AIR",   element: "AIR",   name: "Lame Céleste",     color: "#c4b5fd",  glowColor: "rgba(196,181,253,0.5)", image: SWORD_SKIN_IMAGES.AIR },
+      { id: "sword_TERRE", element: "TERRE", name: "Lame d\'Émeraude", color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",   image: SWORD_SKIN_IMAGES.TERRE },
+      { id: "sword_ETHER", element: "ETHER", name: "Lame du Cosmos",   color: "#a855f7",  glowColor: "rgba(168,85,247,0.5)",  image: SWORD_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "titan",
+    name:        "Titan Primordial Pack",
+    description: "5 titans anciens, incarnations colossales des éléments primordiaux. La puissance à l'état brut.",
+    price:       8000,
+    rarity:      "MYTHIQUE",
+    rarityColor: "#dc2626",
+    rarityGlow:  "rgba(220,38,38,0.3)",
+    icon:        "🗿",
+    skins: [
+      { id: "titan_EAU",   element: "EAU",   name: "Titan des Abysses",  color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: TITAN_SKIN_IMAGES.EAU },
+      { id: "titan_FEU",   element: "FEU",   name: "Titan de Lave",      color: "#ef4444",  glowColor: "rgba(239,68,68,0.5)",   image: TITAN_SKIN_IMAGES.FEU },
+      { id: "titan_AIR",   element: "AIR",   name: "Titan des Nuages",   color: "#e0e7ff",  glowColor: "rgba(224,231,255,0.5)", image: TITAN_SKIN_IMAGES.AIR },
+      { id: "titan_TERRE", element: "TERRE", name: "Titan de Pierre",    color: "#78716c",  glowColor: "rgba(120,113,108,0.5)", image: TITAN_SKIN_IMAGES.TERRE },
+      { id: "titan_ETHER", element: "ETHER", name: "Titan Cosmique",     color: "#c084fc",  glowColor: "rgba(192,132,252,0.5)", image: TITAN_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "pandamonk",
+    name:        "Pandamonk Pack",
+    description: "5 pandas mystiques maîtres des éléments. Sagesse et puissance réunies.",
+    price:       500,
+    rarity:      "ÉPIQUE",
+    rarityColor: "#0ea5e9",
+    rarityGlow:  "rgba(14,165,233,0.3)",
+    icon:        "🐼",
+    skins: [
+      { id: "pandamonk_EAU",   element: "EAU",   name: "Panda des Flots",   color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: PANDA_SKIN_IMAGES.EAU },
+      { id: "pandamonk_FEU",   element: "FEU",   name: "Panda Igné",        color: "#f97316",  glowColor: "rgba(249,115,22,0.5)",  image: PANDA_SKIN_IMAGES.FEU },
+      { id: "pandamonk_AIR",   element: "AIR",   name: "Panda du Vent",     color: "#c084fc",  glowColor: "rgba(192,132,252,0.5)", image: PANDA_SKIN_IMAGES.AIR },
+      { id: "pandamonk_TERRE", element: "TERRE", name: "Panda de Jade",     color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",   image: PANDA_SKIN_IMAGES.TERRE },
+      { id: "pandamonk_ETHER", element: "ETHER", name: "Panda Astral",      color: "#a855f7",  glowColor: "rgba(168,85,247,0.5)",  image: PANDA_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "terranova",
+    name:        "Terra Nova Pack",
+    description: "5 paysages élémentaires grandioses. L'essence brute de chaque élément capturée en une vision.",
+    price:       50,
+    rarity:      "COMMUN",
+    rarityColor: "#64748b",
+    rarityGlow:  "rgba(100,116,139,0.25)",
+    icon:        "🌍",
+    skins: [
+      { id: "terranova_EAU",   element: "EAU",   name: "Chutes Cristal",   color: "#0ea5e9",  glowColor: "rgba(14,165,233,0.5)",   image: TERRANOVA_SKIN_IMAGES.EAU },
+      { id: "terranova_FEU",   element: "FEU",   name: "Rivière de Lave",  color: "#f97316",  glowColor: "rgba(249,115,22,0.5)",   image: TERRANOVA_SKIN_IMAGES.FEU },
+      { id: "terranova_AIR",   element: "AIR",   name: "Tornade Céleste",  color: "#818cf8",  glowColor: "rgba(129,140,248,0.5)",  image: TERRANOVA_SKIN_IMAGES.AIR },
+      { id: "terranova_TERRE", element: "TERRE", name: "Lac Émeraude",     color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",    image: TERRANOVA_SKIN_IMAGES.TERRE },
+      { id: "terranova_ETHER", element: "ETHER", name: "Nébuleuse Astrale",color: "#a855f7",  glowColor: "rgba(168,85,247,0.5)",   image: TERRANOVA_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "elite",
+    name:        "Élite Pack",
+    description: "5 entités divines d\'une puissance absolue. Réservé aux duellistes au sommet de la maîtrise.",
+    price:       9000,
+    rarity:      "DIVIN",
+    rarityColor: "#f59e0b",
+    rarityGlow:  "rgba(245,158,11,0.35)",
+    icon:        "👑",
+    skins: [
+      { id: "elite_EAU",   element: "EAU",   name: "Déesse des Mers",     color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: ELITE_SKIN_IMAGES.EAU },
+      { id: "elite_FEU",   element: "FEU",   name: "Guerrière du Volcan", color: "#ef4444",  glowColor: "rgba(239,68,68,0.5)",   image: ELITE_SKIN_IMAGES.FEU },
+      { id: "elite_AIR",   element: "AIR",   name: "Spectre du Vent",     color: "#c4b5fd",  glowColor: "rgba(196,181,253,0.5)", image: ELITE_SKIN_IMAGES.AIR },
+      { id: "elite_TERRE", element: "TERRE", name: "Titan de Marbre",     color: "#d4af37",  glowColor: "rgba(212,175,55,0.5)",  image: ELITE_SKIN_IMAGES.TERRE },
+      { id: "elite_ETHER", element: "ETHER", name: "Dieu des Étoiles",    color: "#f59e0b",  glowColor: "rgba(245,158,11,0.5)",  image: ELITE_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "destiny",
+    name:        "Destiny Pack",
+    description: "5 chevaux élémentaires légendaires. Chaque monture incarne la force pure d\'un élément.",
+    price:       100,
+    rarity:      "RARE",
+    rarityColor: "#3b82f6",
+    rarityGlow:  "rgba(59,130,246,0.28)",
+    icon:        "🐴",
+    skins: [
+      { id: "destiny_EAU",   element: "EAU",   name: "Destrier des Abysses", color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: DESTINY_SKIN_IMAGES.EAU },
+      { id: "destiny_FEU",   element: "FEU",   name: "Étalon de Feu",        color: "#f97316",  glowColor: "rgba(249,115,22,0.5)",  image: DESTINY_SKIN_IMAGES.FEU },
+      { id: "destiny_AIR",   element: "AIR",   name: "Pégase Céleste",       color: "#c4b5fd",  glowColor: "rgba(196,181,253,0.5)", image: DESTINY_SKIN_IMAGES.AIR },
+      { id: "destiny_TERRE", element: "TERRE", name: "Cheval de Pierre",     color: "#4ade80",  glowColor: "rgba(74,222,128,0.5)",  image: DESTINY_SKIN_IMAGES.TERRE },
+      { id: "destiny_ETHER", element: "ETHER", name: "Cheval Astral",        color: "#f59e0b",  glowColor: "rgba(245,158,11,0.5)",  image: DESTINY_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "minos",
+    name:        "Minos Pack",
+    description: "5 minotaures élémentaires, gardiens des labyrinthes primordiaux. Force et magie réunies.",
+    price:       800,
+    rarity:      "ÉPIQUE",
+    rarityColor: "#8b5cf6",
+    rarityGlow:  "rgba(139,92,246,0.3)",
+    icon:        "🐂",
+    skins: [
+      { id: "minos_EAU",   element: "EAU",   name: "Minotaure des Flots",  color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: MINOS_SKIN_IMAGES.EAU },
+      { id: "minos_FEU",   element: "FEU",   name: "Minotaure Infernal",   color: "#ef4444",  glowColor: "rgba(239,68,68,0.5)",   image: MINOS_SKIN_IMAGES.FEU },
+      { id: "minos_AIR",   element: "AIR",   name: "Minotaure Céleste",    color: "#e0e7ff",  glowColor: "rgba(224,231,255,0.5)", image: MINOS_SKIN_IMAGES.AIR },
+      { id: "minos_TERRE", element: "TERRE", name: "Minotaure de Jade",    color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",   image: MINOS_SKIN_IMAGES.TERRE },
+      { id: "minos_ETHER", element: "ETHER", name: "Minotaure Astral",     color: "#c084fc",  glowColor: "rgba(192,132,252,0.5)", image: MINOS_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "ancestral",
+    name:        "Ancestral Pack",
+    description: "5 mages anciens gardiens des éléments primordiaux. Sagesse millénaire et puissance absolue.",
+    price:       1000,
+    rarity:      "ÉPIQUE",
+    rarityColor: "#10b981",
+    rarityGlow:  "rgba(16,185,129,0.28)",
+    icon:        "🧙",
+    skins: [
+      { id: "ancestral_EAU",   element: "EAU",   name: "Mage des Glaces",   color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: ANCESTRAL_SKIN_IMAGES.EAU },
+      { id: "ancestral_FEU",   element: "FEU",   name: "Mage du Brasier",   color: "#f97316",  glowColor: "rgba(249,115,22,0.5)",  image: ANCESTRAL_SKIN_IMAGES.FEU },
+      { id: "ancestral_AIR",   element: "AIR",   name: "Mage des Vents",    color: "#c4b5fd",  glowColor: "rgba(196,181,253,0.5)", image: ANCESTRAL_SKIN_IMAGES.AIR },
+      { id: "ancestral_TERRE", element: "TERRE", name: "Mage des Forêts",   color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",   image: ANCESTRAL_SKIN_IMAGES.TERRE },
+      { id: "ancestral_ETHER", element: "ETHER", name: "Mage du Cosmos",    color: "#a855f7",  glowColor: "rgba(168,85,247,0.5)",  image: ANCESTRAL_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "oldking",
+    name:        "Old King Pack",
+    description: "5 souverains ancestraux trônant sur leurs royaumes élémentaires. Le pouvoir absolu dans sa forme la plus pure.",
+    price:       600,
+    rarity:      "ÉPIQUE",
+    rarityColor: "#d97706",
+    rarityGlow:  "rgba(217,119,6,0.28)",
+    icon:        "♔",
+    skins: [
+      { id: "oldking_EAU",   element: "EAU",   name: "Roi des Abysses",  color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: OLDKING_SKIN_IMAGES.EAU },
+      { id: "oldking_FEU",   element: "FEU",   name: "Roi des Flammes",  color: "#f97316",  glowColor: "rgba(249,115,22,0.5)",  image: OLDKING_SKIN_IMAGES.FEU },
+      { id: "oldking_AIR",   element: "AIR",   name: "Reine des Vents",  color: "#e0e7ff",  glowColor: "rgba(224,231,255,0.5)", image: OLDKING_SKIN_IMAGES.AIR },
+      { id: "oldking_TERRE", element: "TERRE", name: "Roi de la Forêt",  color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",   image: OLDKING_SKIN_IMAGES.TERRE },
+      { id: "oldking_ETHER", element: "ETHER", name: "Roi des Étoiles",  color: "#f59e0b",  glowColor: "rgba(245,158,11,0.5)",  image: OLDKING_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "timy",
+    name:        "Timy Pack",
+    description: "5 enfants prodiges maîtrisant chaque élément. La magie dans sa forme la plus pure et innocente.",
+    price:       80,
+    rarity:      "COMMUN",
+    rarityColor: "#f472b6",
+    rarityGlow:  "rgba(244,114,182,0.25)",
+    icon:        "🧒",
+    skins: [
+      { id: "timy_EAU",   element: "EAU",   name: "Enfant des Eaux",   color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: TIMY_SKIN_IMAGES.EAU },
+      { id: "timy_FEU",   element: "FEU",   name: "Enfant du Feu",     color: "#f97316",  glowColor: "rgba(249,115,22,0.5)",  image: TIMY_SKIN_IMAGES.FEU },
+      { id: "timy_AIR",   element: "AIR",   name: "Enfant du Vent",    color: "#c084fc",  glowColor: "rgba(192,132,252,0.5)", image: TIMY_SKIN_IMAGES.AIR },
+      { id: "timy_TERRE", element: "TERRE", name: "Enfant de la Terre",color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",   image: TIMY_SKIN_IMAGES.TERRE },
+      { id: "timy_ETHER", element: "ETHER", name: "Enfant des Étoiles",color: "#a855f7",  glowColor: "rgba(168,85,247,0.5)",  image: TIMY_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id:          "daymi",
+    name:        "Daymi Pack",
+    description: "5 cerfs mystiques incarnant chaque élément. Gardiens sacrés des forêts primordiales.",
+    price:       2000,
+    rarity:      "LÉGENDAIRE",
+    rarityColor: "#6366f1",
+    rarityGlow:  "rgba(99,102,241,0.3)",
+    icon:        "🦌",
+    skins: [
+      { id: "daymi_EAU",   element: "EAU",   name: "Cerf des Abysses",  color: "#06b6d4",  glowColor: "rgba(6,182,212,0.5)",   image: DAYMI_SKIN_IMAGES.EAU },
+      { id: "daymi_FEU",   element: "FEU",   name: "Cerf Embrasé",      color: "#f97316",  glowColor: "rgba(249,115,22,0.5)",  image: DAYMI_SKIN_IMAGES.FEU },
+      { id: "daymi_AIR",   element: "AIR",   name: "Cerf Céleste",      color: "#e0e7ff",  glowColor: "rgba(224,231,255,0.5)", image: DAYMI_SKIN_IMAGES.AIR },
+      { id: "daymi_TERRE", element: "TERRE", name: "Cerf de la Forêt",  color: "#22c55e",  glowColor: "rgba(34,197,94,0.5)",   image: DAYMI_SKIN_IMAGES.TERRE },
+      { id: "daymi_ETHER", element: "ETHER", name: "Cerf des Étoiles",  color: "#a855f7",  glowColor: "rgba(168,85,247,0.5)",  image: DAYMI_SKIN_IMAGES.ETHER },
+    ],
+  },
+  {
+    id: "individuel",
+    name: "Pack Individuel",
+    icon: "🗡️",
+    description: "5 skins uniques — un guerrier par élément. Style cyber-néon intense.",
+    price: 750,  // pack = économie vs achat individuel (30+60+80+120+250+400=940)
+    rarity: "RARE",
+    rarityColor: "#3b82f6",
+    rarityGlow: "rgba(59,130,246,0.15)",
+    skins: [
+      { id: "indiv_EAU",   element: "EAU",   name: "Yeo",    color: "#06b6d4", glowColor: "rgba(6,182,212,0.4)",   image: INDIV_SKIN_IMAGES.EAU   },
+      { id: "indiv_FEU",   element: "FEU",   name: "Kilyat", color: "#ef4444", glowColor: "rgba(239,68,68,0.4)",   image: INDIV_SKIN_IMAGES.FEU   },
+      { id: "indiv_AIR",   element: "AIR",   name: "Etham",  color: "#5a9a00", glowColor: "rgba(90,154,0,0.4)",    image: INDIV_SKIN_IMAGES.AIR   },
+      { id: "indiv_TERRE", element: "TERRE", name: "Omi",    color: "#92400e", glowColor: "rgba(146,64,14,0.4)",   image: INDIV_SKIN_IMAGES.TERRE },
+      { id: "indiv_ETHER", element: "ETHER", name: "Vivgur", color: "#a855f7", glowColor: "rgba(168,85,247,0.4)",  image: INDIV_SKIN_IMAGES.ETHER },
+    ],
+  }
+];
+
+
+export { CARD_SKINS, INDIVIDUAL_SKINS, getIndivImage, SKIN_BUNDLES };
