@@ -1,5 +1,5 @@
 // ui/UI.js — Shared UI components, frames, and visual effects
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { getRank } from '../data/ranks.js';
 import { AvatarDisplay } from '../data/avatars.jsx';
 import { ELEMENTS } from '../data/elements.js';
